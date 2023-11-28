@@ -32,7 +32,6 @@ class FtpService:
             self.connect()
             _, file_extension = os.path.splitext(file.filename)
             remote_file_path = '/' + str(file_index) + file_extension.lower()
-            # data_file = file.read()
             print(f'файл {remote_file_path}')
             self.ftp.storbinary(f'STOR {remote_file_path}', file)
 

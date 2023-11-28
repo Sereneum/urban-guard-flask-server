@@ -1,5 +1,6 @@
 # requirements.in
 Flask
-python-dotenv
 Flask-SQLAlchemy
+flask_cors
+python-dotenv
 pyftpdlib
