@@ -1,6 +1,5 @@
 from models import init_event_model
 from datetime import datetime
-from ftpService import FtpService
 
 
 class DatabaseService:
@@ -23,8 +22,30 @@ class DatabaseService:
         )
         self.db.session.add(new_event)
         self.db.session.commit()
-        new_event_id = new_event.event_id
-        print({new_event_id})
-        self.ftp_service.save_file(file=file, file_index=new_event_id)
+        self.ftp_service.save_file(file=file, file_index=new_event.event_id)
+
+    def get_all(self):
+        all_events = self._event_model.query.all()
+
+        events_data = [
+            {
+                'event_id': event.event_id,
+                'camera_id': event.camera_id,
+                'event_timestamp': event.event_timestamp,
+                'event_type': event.event_type,
+                'event_name': event.event_name,
+                'event_image': event.event_image,
+                'coordinates': event.coordinates,
+                'address': event.address,
+                'event_state': event.event_state
+            }
+            for event in all_events
+        ]
+
+        return events_data
+
+        # Возврат данных в формате JSON
+        # return events_data
+        # all_events = self._event_model.query.all()
 
 
