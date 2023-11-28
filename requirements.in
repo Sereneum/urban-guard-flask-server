@@ -4,3 +4,4 @@ Flask-SQLAlchemy
 flask_cors
 python-dotenv
 pyftpdlib
+psycopg2
