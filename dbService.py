@@ -44,8 +44,5 @@ class DatabaseService:
 
         return events_data
 
-        # Возврат данных в формате JSON
-        # return events_data
-        # all_events = self._event_model.query.all()
 
 
