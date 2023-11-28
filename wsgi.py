@@ -1,16 +1,15 @@
-from flask import Flask, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
+from flask import jsonify, request
+from ftpService import FtpService
 from dbService import DatabaseService
 import os
-from dotenv import load_dotenv
-from flask_sqlalchemy import SQLAlchemy
-from ftpService import FtpService
-from flask_cors import CORS
-load_dotenv()
+import sys
 
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('POSTGRES_URL')
-CORS(app)
+from application import create_app
+
+app = create_app()
 db = SQLAlchemy(app)
 ftp_service = FtpService()
 data_service = DatabaseService(db, ftp_service)
@@ -18,7 +17,7 @@ data_service = DatabaseService(db, ftp_service)
 
 @app.route('/', methods=['GET'])
 def home():
-    return jsonify({'status': 'success', 'message': "Urban Guard"})
+    return "<h1>Urban Guard</h1>"
 
 
 @app.route('/api/event', methods=['POST'])
@@ -48,5 +47,6 @@ def get_events():
         return jsonify({'status': 'error', 'message': str(e)})
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run()
+
