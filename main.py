@@ -14,6 +14,11 @@ ftp_service = FtpService()
 data_service = DatabaseService(db, ftp_service)
 
 
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({'status': 'success', 'message': "Urban Guard"})
+
+
 @app.route('/api/event', methods=['POST'])
 def post_event():
     try:

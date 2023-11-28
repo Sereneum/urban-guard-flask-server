@@ -1,0 +1,5 @@
+# requirements.in
+Flask
+python-dotenv
+Flask-SQLAlchemy
+pyftpdlib
