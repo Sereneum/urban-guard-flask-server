@@ -10,4 +10,3 @@ fastapi
 uvicorn
 sqlalchemy
 psycopg2-binary~=2.9.6
-psycopg2==2.9.5
