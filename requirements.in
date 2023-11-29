@@ -1,12 +1,11 @@
 # requirements.in
+psycopg2-binary~=2.9.3
 Flask
 Flask-SQLAlchemy
 flask_cors
 python-dotenv
 pyftpdlib
-psycopg2-binary
 sqlalchemy
 fastapi
 uvicorn
 sqlalchemy
-psycopg2-binary~=2.9.6
