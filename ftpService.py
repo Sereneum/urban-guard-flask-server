@@ -1,6 +1,7 @@
 from ftplib import FTP, error_perm
 import os
 from dotenv import load_dotenv
+from io import BytesIO
 
 
 class FtpService:
@@ -36,5 +37,26 @@ class FtpService:
             self.ftp.storbinary(f'STOR {remote_file_path}', file)
 
             self.disconnect()
+        except error_perm as e:
+            print(f"FTP Error: {e}")
+
+    def get_file(self, file_id):
+        try:
+            self.connect()
+
+            file_list = self.ftp.nlst('/')
+            matching_files = [file for file in file_list if file_id in file]
+            if len(matching_files) == 1:
+                remote_path = matching_files[0]
+                buffer = BytesIO()
+                self.ftp.retrbinary(f'RETR {remote_path}', buffer.write)
+                file_data = buffer.getvalue()
+            else:
+                print(f"Файл <{id}> не найден или найдено более одного совпадения.")
+                return None
+
+            self.disconnect()
+
+            return {"file_data": file_data, "remote_path": remote_path}
         except error_perm as e:
             print(f"FTP Error: {e}")

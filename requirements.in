@@ -4,5 +4,6 @@ psycopg2
 Flask
 Flask-SQLAlchemy
 flask_cors
+Flask-SocketIO
 python-dotenv
 pyftpdlib
