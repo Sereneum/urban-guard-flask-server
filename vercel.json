@@ -11,10 +11,6 @@
       "dest": "/"
     },
     {
-      "src": "/api/file(.*)",
-      "dest": "/api/file$1"
-    },
-    {
       "src": "/(.*)",
       "dest": "/"
     }
