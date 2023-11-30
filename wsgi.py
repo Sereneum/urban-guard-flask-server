@@ -68,7 +68,7 @@ def get_eventst():
 
 
 @app.route('/api/xyi', methods=['GET'])
-def get_events():
+def get_xyi():
     try:
         events_data = data_service.get_all()
         return jsonify({'status': 'success', 'message': 'Данные получены', 'events': events_data})
