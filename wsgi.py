@@ -16,7 +16,8 @@ from application import create_app
 
 # app/sockets
 app = create_app()
-CORS(app)
+allowed_domains = ["http://localhost:3000", "https://urbanguard.vercel.app"]
+CORS(app, resources={r"/api/*": {"origins": allowed_domains}})
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 # database
