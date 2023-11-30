@@ -62,7 +62,7 @@ def post_event():
         return jsonify({'status': 'error', 'message': str(e)})
 
 
-@app.route('/events/xyi', methods=['GET'])
+@app.route('/api/events', methods=['GET'])
 def get_xyi():
     try:
         events_data = data_service.get_all()
@@ -81,10 +81,9 @@ def delete_last_post():
         return jsonify({'status': 'error', 'message': str(e)})
 
 
-@app.route('/api/request_file', methods=['GET', 'POST'])
-def get_file():
+@app.route('/api/file/file_id', methods=['GET', 'POST'])
+def get_file(file_id):
     try:
-        file_id = request.args.get('file_id')
         file_info = ftp_service.get_file(file_id)
         file_data_base64 = base64.b64encode(file_info["file_data"]).decode('utf-8')
         response_data = {"status": "success", "event_id": file_id, "remote_path": file_info["remote_path"], "file_data": file_data_base64}
