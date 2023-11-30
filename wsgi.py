@@ -76,15 +76,6 @@ def get_xyi():
         return jsonify({'status': 'error', 'message': str(e)})
 
 
-@app.route('/api/events', methods=['GET'])
-def get_events():
-    try:
-        events_data = data_service.get_all()
-        return jsonify({'status': 'success', 'message': 'Данные получены', 'events': events_data})
-    except Exception as e:
-        return jsonify({'status': 'error', 'message': str(e)})
-
-
 @app.route('/api/delete/last', methods=['DELETE'])
 def delete_last_post():
     try:
