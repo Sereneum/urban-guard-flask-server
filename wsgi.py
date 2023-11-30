@@ -81,7 +81,7 @@ def delete_last_post():
         return jsonify({'status': 'error', 'message': str(e)})
 
 
-@app.route('/api/file/file_id', methods=['GET', 'POST'])
+@app.route('/api/file/<file_id>', methods=['GET', 'POST'])
 def get_file(file_id):
     try:
         file_info = ftp_service.get_file(file_id)
