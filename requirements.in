@@ -7,3 +7,4 @@ flask_cors
 Flask-SocketIO
 python-dotenv
 pyftpdlib
+flask_params

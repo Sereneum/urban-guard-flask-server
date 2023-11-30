@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from flask import jsonify, request, Flask
+from flask import jsonify, request
 from flask_socketio import SocketIO
 from dotenv import load_dotenv
 from flask_cors import CORS
@@ -81,9 +81,10 @@ def delete_last_post():
         return jsonify({'status': 'error', 'message': str(e)})
 
 
-@app.route('/api/file/<file_id>', methods=['POST'])
-def get_file(file_id):
+@app.route('/api/file', methods=['POST'])
+def get_file():
     try:
+        file_id = request.args.get('file_id')
         file_info = ftp_service.get_file(file_id)
         file_data_base64 = base64.b64encode(file_info["file_data"]).decode('utf-8')
         response_data = {"status": "success", "event_id": file_id, "remote_path": file_info["remote_path"], "file_data": file_data_base64}
