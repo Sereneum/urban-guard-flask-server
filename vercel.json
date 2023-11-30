@@ -1,14 +1,22 @@
- {
-     "builds": [
-         {
-             "src": "./index.py",
-             "use": "@vercel/python"
-         }
-     ],
-     "routes": [
-         {
-             "src": "/(.*)",
-             "dest": "/"
-         }
-     ]
- }
+{
+  "builds": [
+    {
+      "src": "./index.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    },
+    {
+      "src": "/socket.io/(.*)",
+      "dest": "/"
+    },
+    {
+      "src": "/api/file(.*)",
+      "dest": "/api/file$1"
+    }
+  ]
+}
