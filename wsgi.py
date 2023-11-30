@@ -81,7 +81,7 @@ def delete_last_post():
         return jsonify({'status': 'error', 'message': str(e)})
 
 
-@app.route('/api/file', methods=['POST'])
+@app.route('/api/file', methods=['GET'])
 def get_file():
     try:
         file_id = request.args.get('file_id')
