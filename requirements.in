@@ -1,6 +1,5 @@
 # requirements.in
 psycopg2-binary
-psycopg2
 Flask
 Flask-SQLAlchemy
 flask_cors

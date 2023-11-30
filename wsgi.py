@@ -62,12 +62,7 @@ def post_event():
         return jsonify({'status': 'error', 'message': str(e)})
 
 
-@app.route('/api/eventst', methods=['GET'])
-def get_eventst():
-    return 'eventst'
-
-
-@app.route('/api/xyi', methods=['GET'])
+@app.route('/events/xyi', methods=['GET'])
 def get_xyi():
     try:
         events_data = data_service.get_all()
@@ -99,6 +94,5 @@ def get_file():
 
 
 if __name__ == "__main__":
-    # app.run()
     socketio.run(app, allow_unsafe_werkzeug=True)
 
