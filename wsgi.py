@@ -12,13 +12,14 @@ import base64
 load_dotenv()
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
+from application import create_app
+
 # app/sockets
-app = Flask(__name__)
+app = create_app()
 CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 # database
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('POSTGRES_URL')
 db = SQLAlchemy(app)
 ftp_service = FtpService()
 data_service = DatabaseService(db, ftp_service)
