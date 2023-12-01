@@ -34,12 +34,6 @@ def broadcast_delete(event_id):
     socketio.emit('delete_event', event_id)
 
 
-@socketio.on('message')
-def handle_message(msg):
-    print('Received message: ', msg)
-    socketio.emit('message', msg)
-
-
 @app.route('/', methods=['GET'])
 def home():
     return "<h1>Urban Guard</h1>"

@@ -7,7 +7,6 @@ class DatabaseService:
         self.db = db
         self.ftp_service = ftp_service
         self._event_model = init_event_model(db)
-        print({"event_model": self._event_model})
 
     def event_model_to_obj(self, event):
         return {
